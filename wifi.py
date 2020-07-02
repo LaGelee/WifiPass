@@ -3,6 +3,11 @@ import subprocess
 data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('cp1252').split("\n")
 profiles = [i.split(':')[1][1:-1] for i in data if 'Profil Tous les utilisateurs' in i]
 
+print()
+print("*"*61)
+print("{:<50}|  {}".format("Network", "Password"))
+print("*"*61)
+print()
 for pr in profiles:
     try:
         results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', pr, "key=clear"]).decode("cp1252").split("\n")
