@@ -10,6 +10,9 @@ for pr in profiles:
             if "Contenu de la" in i:
                 key = i.split(":")[1][1:-1]
                 print("{:<50}|  {}".format(pr, key))
+            elif "Authentification         : Ouvrir" in i:
+                key = i.split(":")[1][1:-1]
+                print("{:<50}|  NO KEY FOR THE NETWORK... !".format(pr))
     except:
         print()
         print("Error with...",pr)
