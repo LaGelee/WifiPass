@@ -4,10 +4,20 @@ import sys
 args = sys.argv[1:]
 language = ["FR"]
 
+def usage():
+    print("                                      ")
+    print("Usage:                                ")
+    print("             python wifi.py [LANGUAGE]")
+    print("                                      ")
+    print("Languages:                            ")
+    print("             FR                       ")
+    print("                                      ")
+    print("Exemples:                             ")
+    print("             python wifi.py FR        ")
+    print("                                      ")
+
 if len(args) != 1 or args[0] not in language:
-    print(f'Usage:')
-    for i in language:
-        print(f"        python wifi.py {i}")
+    usage()
     input()
     sys.exit()
 else:
@@ -15,7 +25,6 @@ else:
         check_profile = "Profil Tous les utilisateurs"
         check_key = "Contenu de la"
         check_open = "Authentification         : Ouvrir"
-
 
 data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('cp1252').split("\n")
 profiles = [i.split(':')[1][1:-1] for i in data if check_profile in i]
